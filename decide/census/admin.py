@@ -20,8 +20,8 @@ from django.http import HttpResponse
 def export_selected(modeladmin, request, queryset):
 	census_resource = CensusResources()
 	dataset = census_resource.export(queryset)
-	response = HttpResponse (dataset.xls, content_type='text/xls')
-	response['Content-Disposition'] = 'attachment; filename="census.xls"'
+	response = HttpResponse (dataset.csv, content_type='text/csv')
+	response['Content-Disposition'] = 'attachment; filename="census.csv"'
 	return response
 export_selected.short_description = 'Export selected as xls'
 
